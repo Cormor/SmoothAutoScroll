@@ -1,0 +1,81 @@
+body {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+}
+
+.toolbar, .speed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar {
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  background: var(--vscode-editorWidget-background);
+}
+
+button {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 2px 8px;
+  border: 1px solid var(--vscode-button-border, transparent);
+  border-radius: 3px;
+  background: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible, #viewport:focus-visible {
+  outline: 1px solid var(--vscode-focusBorder);
+  outline-offset: -2px;
+}
+
+button:disabled { opacity: 0.55; cursor: default; }
+button:enabled:hover { background: var(--vscode-button-secondaryHoverBackground); }
+#toggle { min-width: 52px; background: var(--vscode-button-background); color: var(--vscode-button-foreground); }
+#toggle:enabled:hover { background: var(--vscode-button-hoverBackground); }
+#level { min-width: 24px; text-align: center; font-variant-numeric: tabular-nums; }
+#status { min-width: 5em; }
+.hint { color: var(--vscode-descriptionForeground); }
+
+#viewport {
+  overflow: auto;
+  overflow-anchor: none;
+  overscroll-behavior: contain;
+}
+
+#content {
+  position: relative;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 14px);
+  font-weight: var(--vscode-editor-font-weight);
+  line-height: 1.5;
+}
+
+.source-line {
+  position: relative;
+  min-height: 1lh;
+  padding-inline: calc(var(--line-number-width) + 28px) 16px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.source-line::before {
+  position: absolute;
+  inset-inline-start: 16px;
+  width: var(--line-number-width);
+  content: attr(data-line) / "";
+  text-align: end;
+  user-select: none;
+  color: var(--vscode-editorLineNumber-foreground);
+}

@@ -1,0 +1,52 @@
+{
+  "name": "smooth-auto-scroll",
+  "displayName": "自动滚动",
+  "description": "在阅读视图中连续滚动当前文件，用滚轮逐档控制速度和方向。",
+  "publisher": "lixing",
+  "version": "1.3.0",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "main": "./extension.js",
+  "icon": "media/icon.png",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "smoothAutoScroll.toggle",
+        "title": "打开连续滚动阅读视图",
+        "category": "自动滚动",
+        "icon": "media/scroll.svg"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "smoothAutoScroll.toggle",
+          "when": "isWindows && editorLangId && !isInDiffEditor",
+          "group": "navigation@90"
+        }
+      ]
+    }
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cormor/SmoothAutoScroll.git"
+  },
+  "homepage": "https://github.com/Cormor/SmoothAutoScroll",
+  "bugs": {
+    "url": "https://github.com/Cormor/SmoothAutoScroll/issues"
+  }
+}
